@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard1.3;net45;net46;net47</TargetFrameworks>
+    <Company>Koen Ekelschot</Company>
+    <Authors>peckham</Authors>
+    <RepositoryUrl>https://github.com/peckham/SimpleDI</RepositoryUrl>
+    <Copyright>Copyright ©  2017</Copyright>
+    <Description>Simple .net dependency injection</Description>
+    <PackageTags>Dependency Injection, DI, IoC</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <Version>1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
