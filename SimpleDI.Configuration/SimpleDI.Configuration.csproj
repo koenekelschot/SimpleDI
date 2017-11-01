@@ -8,8 +8,8 @@
     <Copyright>Copyright ©  2017</Copyright>
     <Description>Json configuration provider for .net dependency injection</Description>
     <PackageTags>Dependency Injection, DI, IoC, configuration, json</PackageTags>
-    <PackageReleaseNotes></PackageReleaseNotes>
-    <Version>1.0.0</Version>
+    <PackageReleaseNotes>Fixed configuration</PackageReleaseNotes>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -6,17 +6,7 @@ namespace SimpleDI.Configuration.Test
     public class ServiceCollectionTest
     {
         [TestMethod]
-        public void ServiceCollection_Configure_ExtensionTest()
-        {
-            var provider = new ServiceCollection()
-                .Configure(new TestableConfigurationSection<BasicConfigTestClass>(new BasicConfigTestClass()));
-
-            Assert.IsInstanceOfType(provider, typeof(IServiceCollection));
-            Assert.IsInstanceOfType(provider, typeof(SimpleDI.IServiceCollection));
-        }
-
-        [TestMethod]
-        public void ServiceCollection_ConfigureTest()
+        public void IServiceCollectionExtensions_ConfigureTest()
         {
             var provider = new ServiceCollection()
                 .Configure(new TestableConfigurationSection<BasicConfigTestClass>(new BasicConfigTestClass()))
@@ -24,6 +14,7 @@ namespace SimpleDI.Configuration.Test
 
             var config = provider.GetService<IOptions<BasicConfigTestClass>>();
 
+            Assert.IsInstanceOfType(provider, typeof(IServiceCollection));
             Assert.IsNotNull(config);
             Assert.IsInstanceOfType(config, typeof(IOptions<BasicConfigTestClass>));
         }
