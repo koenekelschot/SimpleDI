@@ -53,12 +53,5 @@
         {
             return (IServiceProvider)_serviceProvider;
         }
-
-        protected IServiceCollection Configure<TOptions>(IOptions<TOptions> configuration) where TOptions : class, new()
-        {
-            ServiceHelper.ThrowIfInterface<TOptions>();
-            _serviceProvider.RegisterConfiguration<TOptions>(configuration);
-            return this;
-        }
     }
 }

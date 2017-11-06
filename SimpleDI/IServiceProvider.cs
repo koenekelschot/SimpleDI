@@ -12,7 +12,5 @@
 
         void RegisterTransient<ServiceType>() where ServiceType : class;
         void RegisterTransient<InterfaceType, ServiceType>() where ServiceType : class, InterfaceType where InterfaceType : class;
-
-        void RegisterConfiguration<TOptions>(IOptions<TOptions> configuration) where TOptions : class, new();
     }
 }

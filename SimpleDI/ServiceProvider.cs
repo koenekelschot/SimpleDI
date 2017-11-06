@@ -45,11 +45,6 @@ namespace SimpleDI
             RegisterService<ServiceType>(null, Lifetime.Transient);
         }
 
-        void IInternalServiceProvider.RegisterConfiguration<TOptions>(IOptions<TOptions> configuration)
-        {
-            RegisterService<IOptions<TOptions>>(configuration, Lifetime.Singleton);
-        }
-
         private void RegisterService<ServiceType>(ServiceType instance, Lifetime lifetime) where ServiceType : class
         {
             var serviceType = typeof(ServiceType);
