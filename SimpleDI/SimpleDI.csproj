@@ -8,8 +8,8 @@
     <Copyright>Copyright ©  2017</Copyright>
     <Description>Simple .net dependency injection</Description>
     <PackageTags>Dependency Injection, DI, IoC</PackageTags>
-    <PackageReleaseNotes></PackageReleaseNotes>
-    <Version>1.0.0</Version>
+    <PackageReleaseNotes>Internal refactor</PackageReleaseNotes>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
