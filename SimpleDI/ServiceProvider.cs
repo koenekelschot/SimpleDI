@@ -119,7 +119,7 @@ namespace SimpleDI
 
         private object CreateInstanceOf(Type serviceType, IList<Type> typeStack)
         {
-            ConstructorInfo ctor = GetCtorWithFewestArguments(serviceType); //shit I'm lazy
+            ConstructorInfo ctor = GetCtorWithFewestArguments(serviceType);
             if (ctor != null)
             {
                 var parameterValues = new List<object>();
@@ -137,7 +137,14 @@ namespace SimpleDI
                     parameterValues.Add(Type.Missing);
                 }
 
-                return ctor.Invoke(parameterValues.ToArray());
+                try
+                {
+                    return ctor.Invoke(parameterValues.ToArray());
+                }
+                catch (MemberAccessException)
+                {
+                    return null;
+                }
             }
 
             return null;
