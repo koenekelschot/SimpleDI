@@ -88,6 +88,21 @@ namespace SimpleDI.Test
         }
 
         [TestMethod]
+        public void ServiceProvider_GetService_WithInterfaceParam()
+        {
+            var provider = new ServiceCollection()
+                .AddTransient<IOptionsServiceTestClass>()
+                .AddSingleton<Options<TestOptions>>(new Options<TestOptions>(new TestOptions()))
+                .BuildServiceProvider();
+
+            IOptionsServiceTestClass service = null;
+
+            Assert.That.ThrowsNoException<TypeLoadException>(
+                () => service = provider.GetService<IOptionsServiceTestClass>()
+            );
+        }
+
+        [TestMethod]
         public void ServiceProvider_GetService_SimpleCircularReferenceTest()
         {
             var provider = new ServiceCollection()
@@ -168,6 +183,20 @@ namespace SimpleDI.Test
         private class NonDefaultNonOptionalConstructorTestClass
         {
             public NonDefaultNonOptionalConstructorTestClass(bool arg1, bool arg2) { }
+        }
+
+        private class IOptionsServiceTestClass
+        {
+            private readonly TestOptions _settings;
+            public IOptionsServiceTestClass(IOptions<TestOptions> settings)
+            {
+                _settings = settings.Value;
+            }
+        }
+
+        private class TestOptions
+        {
+            public string Test { get; set; }
         }
 
         private class SimpleCircularRef1

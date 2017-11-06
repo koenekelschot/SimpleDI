@@ -33,18 +33,18 @@ namespace SimpleDI.Configuration
             }
         }
 
-        public ConfigType Get<ConfigType>(string propertyPath) where ConfigType : class
+        public ConfigType Get<ConfigType>(string propertyPath)
         {
             return Get<ConfigType>(propertyPath, default(ConfigType));
         }
 
-        public ConfigType Get<ConfigType>(string propertyPath, ConfigType defaultValue) where ConfigType : class
+        public ConfigType Get<ConfigType>(string propertyPath, ConfigType defaultValue)
         {
             try
             {
                 propertyPath = propertyPath.Replace(':', '.').Trim('.');
                 var value = GetValue<ConfigType>(propertyPath);
-                if (value == null || value == default(ConfigType))
+                if (value == null || value.Equals(default(ConfigType)))
                 {
                     return defaultValue;
                 }
@@ -73,9 +73,10 @@ namespace SimpleDI.Configuration
             }
         }
 
-        protected virtual ConfigType GetValue<ConfigType>(string path) where ConfigType : class
+        protected virtual ConfigType GetValue<ConfigType>(string path)
         {
-            return _jsonRoot.SelectToken(path)?.Value<ConfigType>();
+            var token = _jsonRoot.SelectToken(path);
+            return token != null ? token.Value<ConfigType>() : default(ConfigType);
         }
 
         protected virtual ConfigType GetObject<ConfigType>(string path) where ConfigType : class

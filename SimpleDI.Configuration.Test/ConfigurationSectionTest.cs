@@ -73,6 +73,15 @@ namespace SimpleDI.Configuration.Test
         }
 
         [TestMethod]
+        public void ConfigurationSection_Get_ValueTypeTest()
+        {
+            var testOptions = new TestableConfigurationSection<ComplexTestOptions>(new ComplexTestOptions());
+
+            Assert.IsInstanceOfType(testOptions.Get<int>("TestValueType"), typeof(int));
+            Assert.AreEqual(42, testOptions.Get<int>("TestValueType"));
+        }
+
+        [TestMethod]
         public void ConfigurationSection_Get_UnknownPropertyTest()
         {
             var testOptions = new TestableConfigurationSection<ComplexTestOptions>(new ComplexTestOptions());

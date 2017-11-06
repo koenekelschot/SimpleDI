@@ -158,7 +158,7 @@ namespace SimpleDI
 
         private ConstructorInfo GetCtorWithFewestArguments(Type type)
         {
-            IEnumerable<ConstructorInfo> ctors = type.GetTypeInfo().DeclaredConstructors;
+            IEnumerable<ConstructorInfo> ctors = type.GetTypeInfo().DeclaredConstructors.Where(ctor => ctor.IsPublic);
             var constructor = ctors.FirstOrDefault(ctor => ctor.GetParameters().Count() == 0);
 
             if (constructor == null)

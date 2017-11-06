@@ -103,6 +103,7 @@ namespace SimpleDI.Configuration.Test
     public class ComplexTestOptions
     {
         public string TestProperty { get; set; } = "default value";
+        public int TestValueType { get; set; } = 42;
         public SimpleTestOptions TestOptions { get; set; } = new SimpleTestOptions("test");
     }
 

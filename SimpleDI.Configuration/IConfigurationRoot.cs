@@ -5,8 +5,8 @@ namespace SimpleDI.Configuration
     public interface IConfigurationRoot
     {
         IConfigurationSection<ConfigType> GetSection<ConfigType>(string sectionName) where ConfigType : class, new();
-        ConfigType Get<ConfigType>(string propertyPath) where ConfigType : class;
-        ConfigType Get<ConfigType>(string propertyPath, ConfigType defaultValue) where ConfigType : class;
+        ConfigType Get<ConfigType>(string propertyPath);
+        ConfigType Get<ConfigType>(string propertyPath, ConfigType defaultValue);
     }
 
     internal interface IInternalConfigurationRoot

@@ -8,8 +8,8 @@
     <Copyright>Copyright ©  2017</Copyright>
     <Description>Json configuration provider for .net dependency injection</Description>
     <PackageTags>Dependency Injection, DI, IoC, configuration, json</PackageTags>
-    <PackageReleaseNotes>Fixed stackoverflowexception in configuration</PackageReleaseNotes>
-    <Version>1.0.2</Version>
+    <PackageReleaseNotes>Allow value types</PackageReleaseNotes>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 
   <ItemGroup>

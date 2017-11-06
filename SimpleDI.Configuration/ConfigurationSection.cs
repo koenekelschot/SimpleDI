@@ -11,12 +11,12 @@
             _path = path;
         }
 
-        public ConfigSubType Get<ConfigSubType>(string propertyPath) where ConfigSubType : class
+        public ConfigSubType Get<ConfigSubType>(string propertyPath)
         {
             return Get<ConfigSubType>(propertyPath, default(ConfigSubType));
         }
 
-        public ConfigSubType Get<ConfigSubType>(string propertyPath, ConfigSubType defaultValue) where ConfigSubType : class
+        public ConfigSubType Get<ConfigSubType>(string propertyPath, ConfigSubType defaultValue)
         {
             string fullPath = string.Join(":", _path, propertyPath);
             return _root.Get<ConfigSubType>(fullPath, defaultValue);
