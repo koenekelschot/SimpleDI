@@ -27,7 +27,7 @@ namespace SimpleDI.Configuration
                 var result = GetObject<ConfigType>(sectionName);
                 return new ConfigurationSection<ConfigType>(result, this, sectionName);
             }
-            catch(JsonReaderException)
+            catch (Exception ex) when (ex is JsonReaderException || ex is NullReferenceException)
             {
                 return new ConfigurationSection<ConfigType>(new ConfigType(), this, sectionName);
             }
@@ -46,11 +46,11 @@ namespace SimpleDI.Configuration
                 var value = GetValue<ConfigType>(propertyPath);
                 if (value == null || value.Equals(default(ConfigType)))
                 {
-                    return defaultValue;
+                    value = defaultValue;
                 }
                 return value;
             }
-            catch (JsonReaderException)
+            catch (Exception ex) when (ex is JsonReaderException || ex is NullReferenceException)
             {
                 return defaultValue;
             }
@@ -75,8 +75,7 @@ namespace SimpleDI.Configuration
 
         protected virtual ConfigType GetValue<ConfigType>(string path)
         {
-            var token = _jsonRoot.SelectToken(path);
-            return token != null ? token.Value<ConfigType>() : default(ConfigType);
+            return _jsonRoot.SelectToken(path).Value<ConfigType>();
         }
 
         protected virtual ConfigType GetObject<ConfigType>(string path) where ConfigType : class

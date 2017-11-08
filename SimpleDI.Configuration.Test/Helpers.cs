@@ -41,7 +41,7 @@ namespace SimpleDI.Configuration.Test
         {
             if (!"".Equals(path))
             {
-                throw new JsonReaderException("Mock failure from test");
+                throw new NullReferenceException("Mock failure from test");
             }
             return _config as SubType;
         }
